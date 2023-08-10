@@ -5,9 +5,10 @@ class BatteryNode : public rclcpp::Node
 {
 public:
     
-    BatteryNode() : Node("battery")
+    BatteryNode() : Node("battery"), battery_state_("full")
+
     {   
-        battery_state_=("full");
+        
         last_time_battery_state_changed_ = this->get_clock()->now().seconds();
         battery_timer_ = this->create_wall_timer(
             std::chrono::milliseconds(100),
